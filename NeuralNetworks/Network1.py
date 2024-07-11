@@ -1,6 +1,8 @@
 
 # Erik Kaufman
 # 
+# based on: http://neuralnetworksanddeeplearning.com/
+#
 # Goal: Create and train a neural network that processes 28x28 black and white 
 # pixel images to detect whitch number (0-9) they are.
 #
