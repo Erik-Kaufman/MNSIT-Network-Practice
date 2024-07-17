@@ -15,14 +15,15 @@
 import mnist_loader
 training_data, validation_data, test_data = mnist_loader.load_data_wrapper()
 import network1
-net = network1.Network([784, 30, 10])
-net.SGD(training_data, 30, 10, 3.0, test_data=test_data)
+net = network1.Network([784, 40, 10])
+net.SGD(training_data, 5, 20, 3.0, test_data=test_data)
 """
-
 
 import numpy as np
 import random
 import time
+from matplotlib import pyplot as plt
+import keyboard as kb
 
 class Network(object):
 
@@ -154,7 +155,18 @@ class Network(object):
         """Return the vector of partial derivatives (partial C_x /
         partial a) for the output activations."""
         return 2*(output_activations-y) # I added this two here becaseu thats what my calc says but I might be wrong
-
+    
+    def show_data(self, test_data):
+        print("Close the window to advance to the next one")
+        print("Press Q to quit")
+        np.random.shuffle(test_data)
+        for (x, y) in test_data:
+            predicted_result = np.argmax(self.feedforward(x))
+            plt.imshow((np.reshape(x, (28, 28)) * 255), cmap='gray', vmin=0, vmax=255)
+            plt.title(f"{y} -> {predicted_result}", fontsize=35)
+            plt.show()
+            if (kb.is_pressed('q')):
+                break
 
 # other functions
 def sigmoid(z):

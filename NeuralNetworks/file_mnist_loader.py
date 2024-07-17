@@ -8,7 +8,7 @@ and ``load_data_wrapper``.  In practice, ``load_data_wrapper`` is the
 function usually called by our neural network code.
 """
 
-# THIS ONE IF FOR USE IN THE COMMAND PROMPT
+# THIS ONE IF FOR USE IN CUSTOM PYTHON FILES
 
 #### Libraries
 # Standard library
@@ -43,7 +43,7 @@ print(load_data_wrapper()[0])
     That's done in the wrapper function ``load_data_wrapper()``, see
     below.
     """
-    f = gzip.open('../data/mnist.pkl.gz', 'rb') 
+    f = gzip.open('./data/mnist.pkl.gz', 'rb') 
     u = pickle._Unpickler(f)
     u.encoding = 'latin1'
     training_data, validation_data, test_data = u.load()
